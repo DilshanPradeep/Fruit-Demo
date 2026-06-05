@@ -11,6 +11,17 @@ from fastapi.responses import HTMLResponse, JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 from roboflow import Roboflow
 
+import os
+
+# Bypass Vercel's missing HOME variable issue
+if not os.environ.get("HOME"):
+    os.environ["HOME"] = "/tmp"
+
+# Now import roboflow safely
+from roboflow import Roboflow
+
+# ... the rest of your serverless function code ...
+
 # ── Config ──────────────────────────────────────────────────────────────
 API_KEY = "aNQojwGzi6K6FI8x9Mpl"
 PROJECT_NAME = "fruits-and-vegetables-yz9mm"
